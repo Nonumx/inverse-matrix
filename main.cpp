@@ -47,3 +47,25 @@ Matrix matmul(const Matrix &a, const Matrix &b) {
   }
   return r;
 }
+
+Matrix cofactor(const Matrix &m, int select_row, int select_col) {
+    Matrix res(m.row - 1, m.col - 1);
+    for (int i = 0; i < m.row; i++) {
+        for (int j = 0; j < m.col; j++) {
+            if (i == select_row || j == select_col) {
+                continue;
+            }
+
+            if (i >= select_row && j < select_col) {
+                res(i - 1, j) = m(i, j);
+            } else if (i < select_row && j >= select_col) {
+                res(i, j - 1) = m(i, j);
+            } else if (i >= select_row && j >= select_col) {
+                res(i - 1, j - 1) = m(i, j);
+            } else {
+                res(i, j) = m(i, j);
+            }
+        }
+    }
+    return res;
+}
