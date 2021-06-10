@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 struct Matrix {
   int col;
@@ -78,4 +79,37 @@ Matrix T(const Matrix &m) {
         }
     }
     return t;
+}
+
+double  det(const Matrix &m) {
+    double ans = 0.0;
+
+    std::vector<int> idx(m.row);
+    for (int i = 0; i < m.row; i++) {
+        idx[i] = i;
+    }
+
+    do {
+        int sgn = 0;
+        for (int i = 0; i < m.row; i++) {
+            for (int j = i + 1; j < m.row; j++) {
+                if (idx[j] < idx[i]) sgn++;
+            }
+        }
+
+        if (sgn & 1) {
+            sgn = -1;
+        } else {
+            sgn = 1;
+        }
+
+        double prod = 1.0;
+        for (int i = 0; i < m.row; i++) {
+            prod *= m(i, idx[i]);
+        }
+        prod *= sgn;
+
+        ans += prod;
+    } while (std::next_permutation(idx.begin(), idx.end()));
+    return ans;
 }
