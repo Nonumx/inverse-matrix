@@ -127,3 +127,13 @@ Matrix adjugate(const Matrix &m) {
     ans = T(ans);
     return ans;
 }
+
+Matrix divide(const Matrix &m, double v) {
+    Matrix ans(m.row, m.col);
+    for (int i = 0; i < m.row; i++) {
+        for (int j = 0; j < m.col; j++) {
+            ans(i, j) = m(i, j) / v;
+        }
+    }
+    return ans;
+}
