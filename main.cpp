@@ -35,3 +35,15 @@ struct Matrix {
 
   double &operator()(int i, int j) { return mat[i][j]; }
 };
+
+Matrix matmul(const Matrix &a, const Matrix &b) {
+  Matrix r(a.row, b.col);
+  for (int i = 0; i < a.row; i++) {
+    for (int j = 0; j < b.col; j++) {
+      for (int k = 0; k < a.col; k++) {
+        r(i, j) = r(i, j) + a(i, k) * b(k, j);
+      }
+    }
+  }
+  return r;
+}
