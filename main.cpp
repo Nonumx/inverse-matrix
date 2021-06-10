@@ -137,3 +137,10 @@ Matrix divide(const Matrix &m, double v) {
     }
     return ans;
 }
+
+Matrix inverse(const Matrix &m) {
+    Matrix adj = adjugate(m);
+    double det_adj = det(m);
+    Matrix inv_m = divide(adj, det_adj);
+    return inv_m;
+}
