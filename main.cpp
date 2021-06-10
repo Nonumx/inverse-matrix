@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 
 struct Matrix {
   int col;
@@ -167,4 +168,30 @@ void example1() {
     m = matmul(m, inv_m);
     std::cout << "Check:\n";
     std::cout << m << "\n";
+}
+
+void solve(std::string filename) {
+    // "/home/nonumx/CLionProjects/inv/matrix/arc130/arc130.mtx"
+    std::ifstream ifs(filename);
+    if (!ifs.is_open()) {
+        return;
+    }
+
+    int row, column, nz;
+    ifs >> row >> column >> nz;
+    Matrix m(row, column);
+
+    int i, j;
+    double v;
+    while (ifs >> i >> j >> v) {
+        i--;
+        j--;
+        m(i, j) = v;
+    }
+
+    Matrix inv_m = inverse(m);
+
+    m = matmul(m, inv_m);
+    std::cout << "check:\n";
+    std::cout << m;
 }
