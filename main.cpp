@@ -144,3 +144,27 @@ Matrix inverse(const Matrix &m) {
     Matrix inv_m = divide(adj, det_adj);
     return inv_m;
 }
+
+void example1() {
+    Matrix m(3, 3);
+    m(0, 0) = 2;
+    m(0, 1) = 3;
+    m(0, 2) = 1;
+    m(1, 0) = 3;
+    m(1, 1) = 4;
+    m(1, 2) = 1;
+    m(2, 0) = 3;
+    m(2, 1) = 7;
+    m(2, 2) = 2;
+    std::cout << "Matrix m is:\n";
+    std::cout << m << std::endl;
+
+
+    Matrix inv_m = inverse(m);
+    std::cout << "Inverse of m:\n";
+    std::cout << inv_m << "\n";
+
+    m = matmul(m, inv_m);
+    std::cout << "Check:\n";
+    std::cout << m << "\n";
+}
