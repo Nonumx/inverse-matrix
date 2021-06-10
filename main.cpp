@@ -69,3 +69,13 @@ Matrix cofactor(const Matrix &m, int select_row, int select_col) {
     }
     return res;
 }
+
+Matrix T(const Matrix &m) {
+    Matrix t(m.col, m.row);
+    for (int i = 0; i < m.row; i++) {
+        for (int j = 0; j < m.col; j++) {
+            t(j, i) = m(i, j);
+        }
+    }
+    return t;
+}
