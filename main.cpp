@@ -113,3 +113,17 @@ double  det(const Matrix &m) {
     } while (std::next_permutation(idx.begin(), idx.end()));
     return ans;
 }
+
+Matrix adjugate(const Matrix &m) {
+    Matrix ans(m.row, m.col);
+    for (int i = 0; i < m.row; i++) {
+        for (int j = 0; j < m.col; j++) {
+            ans(i, j) = det(cofactor(m, i, j));
+            if ((i + j) & 1) {
+                ans(i, j) = -ans(i, j);
+            }
+        }
+    }
+    ans = T(ans);
+    return ans;
+}
