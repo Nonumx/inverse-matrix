@@ -195,3 +195,8 @@ void solve(std::string filename) {
     std::cout << "check:\n";
     std::cout << m;
 }
+
+int main() {
+    example1();
+    return 0;
+}
