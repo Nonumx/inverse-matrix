@@ -43,5 +43,5 @@ struct Matrix {
 
 void example1();
 void solve(std::string filename);
-
+Matrix matmul(const Matrix &a, const Matrix &b);
 #endif
