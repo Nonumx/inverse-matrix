@@ -1,4 +1,4 @@
-#include "adjugate.h"
+#include "elimination.h"
 
 int main() {
   example1();

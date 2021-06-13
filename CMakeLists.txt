@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(inv main.cpp
                adjugate.cpp
-               adjugate.h)
+               adjugate.h
+               elimination.cpp
+               elimination.h)
