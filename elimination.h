@@ -1,5 +1,6 @@
 #ifndef ELIMINATION_H
 #define ELIMINATION_H
+#include <cmath>
 #include <stdexcept>
 #include <vector>
 
