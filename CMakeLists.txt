@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(MPI REQUIRED)
 include_directories("${MPI_INCLUDE_PATH}")
 
+find_package(OpenMP REQUIRED)
+
 add_executable(inv main.cpp
                adjugate.cpp
                adjugate.h
@@ -13,3 +15,4 @@ add_executable(inv main.cpp
                elimination.h)
 
 target_link_libraries(inv ${MPI_CXX_LIBRARIES})
+target_link_libraries(inv ${OpenMP_CXX_FLAGS})

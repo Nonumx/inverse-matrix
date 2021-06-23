@@ -3,6 +3,8 @@
 #include <cmath>
 #include <stdexcept>
 #include <vector>
+#include <mpi.h>
+#include <omp.h>
 
 #include "adjugate.h"
 
